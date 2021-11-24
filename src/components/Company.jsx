@@ -1,51 +1,54 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router"
-import {Container, Row, Col} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import { useState, useEffect } from "react"
+import {Container, Row, Col, Card, Button} from 'react-bootstrap'
+import { useParams } from "react-router-dom"
+import {addToFavAction} from '../actions'
+import { connect } from 'react-redux'
 
 
-
-const Company = ()=>{
-    
-    
-    const [jobs, setJobs] = useState([])
-    const params = useParams()
-    
-    useEffect(()=>{
-        fetchJobs()
-        console.log(jobs)
-    },[])
-    
-    const baseEndpoint = 'https://strive-jobs-api.herokuapp.com/jobs?_id='
-    
-    const fetchJobs = async ()=>{
-
-        const response = await fetch(baseEndpoint + params.company)
-        const { data } = await response.json()
-
-        setJobs(data[0])
-        
-        
+const mapStateToProps = (state) => state
+  
+  const mapDispatchToProps = (dispatch) => ({
+    addToFav: function (addCompany) {
+      dispatch(addToFavAction(addCompany))
     }
-    
-    
-    return(
+  })
 
+
+const CompanyInfo = ({addToFav}) => {
+    // const [selectedCompany, setSelectedCompany] = useState('')
+    const [jobs, setJobs] = useState([])
+    const params = useParams();
+
+    useEffect(() => {
+        jobInfo()
+    }, [])
+
+
+    const jobInfo = async() => {
+        let response = await fetch(`https://strive-jobs-api.herokuapp.com/jobs?company=${params.company}&limit=10`)
+        const {data} = await response.json()
+        setJobs(data)
+    }
+
+    return(
         <Container>
-            <Row
-            className="mx-0 mt-3 p-3"
-            style={{ border: '1px solid #00000033', borderRadius: 4 }}
-        >
-            
-                <Col xs={3}>
-                    <Link to={`/${jobs._id}`}>{jobs.company_name}</Link>
-                </Col>
-                <Col xs={9}>
-                    <a href={jobs.url} target='_blank' rel="noreferrer">{jobs.title}</a>
+            <Row>
+                <Col>
+                
+                    {jobs.map((info) => ( 
+                        <Card key={info._id}>
+                        <Card.Body>
+                            <span><strong>{info.company_name}</strong></span> 
+                            <Button variant="outline-danger" className="ml-3" onClick={() => addToFav(info)}>Add to Favs</Button>
+                            <div>{info.title}</div>
+                            </Card.Body>
+                      </Card>
+                         ))}
+                        
                 </Col>
             </Row>
         </Container>
-
     )
 }
-export default Company
+
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyInfo)

@@ -1,13 +1,19 @@
-
 import { createStore } from 'redux'
-import MainReducer from '../reducers'
+import mainReducer from '../reducers'
+
+
 
 export const initialState = {
-
-    favs : {
-        content:[]
-    }
+  
+  favs: {
+    content: [],
+  },
 }
 
-const configureStore = createStore(MainReducer, initialState,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-export default configureStore 
+const configureStore = createStore(
+  mainReducer,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+export default configureStore

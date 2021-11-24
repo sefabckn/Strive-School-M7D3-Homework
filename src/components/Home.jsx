@@ -41,7 +41,7 @@ const Home =  () =>{
                         <Navbar.Brand href="#home">Find a Job</Navbar.Brand>
                         <Nav className="me-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#favs">Favourites</Nav.Link>
+                        <Nav.Link href="/favorites">Favourites</Nav.Link>
                         </Nav>
 
                     </Container>
