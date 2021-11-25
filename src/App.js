@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/:company" element={<Company />}></Route>
-          <Route as ={Link} to element={<Favs />}></Route>
+          <Route path="/favorites" element={<Favs />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
