@@ -16,7 +16,7 @@ const Favs = ({ favs, removeFromFav }) => {
   console.log("favs", favs);
   return (
     <Row>
-      <h1>Favs</h1>
+      <h1 style={{textAlign: "center"}}>Favourites</h1>
       <Col sm={12}>
         <ul style={{ listStyle: "none" }}>
           {favs.map((company, i) => (
