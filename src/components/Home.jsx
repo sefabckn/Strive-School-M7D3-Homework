@@ -42,18 +42,6 @@ const Home = (props) => {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Find a Job</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link as={Link} to="/favorites">
-              Favourites
-            </Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-
       <h1>Here is your Job Search Results: </h1>
       <Container>
         <Row id="row1">
