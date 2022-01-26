@@ -8,7 +8,7 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         favs: {
           ...state.favs,
-          // set tekrarlamaları önler
+          // set prevents repetitions
           content: [...new Set([...state.favs.content, action.payload])],
           // bu da alternatif
          // content: state.favs.content.find((job) => job.id === action.job.id)
@@ -21,9 +21,7 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         favs: {
           ...state.favs,
-          content: state.favs.content.filter(
-            (company, i) => i !== action.payload
-          ),
+          content: state.favs.content.filter((company, i) => i !== action.payload),
         },
       };
     default:
