@@ -1,7 +1,7 @@
 import "./App.css";
 
 import Company from "./components/Company";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home.jsx";
 import Favs from "./components/Favs";
 import "bootstrap/dist/css/bootstrap.min.css";
