@@ -109,11 +109,10 @@ const Home = (props) => {
             </ListGroup>
           </Col>
         </Row>
-        <Row id='row2' md={3}>
-          <Col >
-            <ListGroup as="ul" className="d-flex justify-content-between align-items-center">
-              {
-                category.map((c) => (
+        <Row id='row2' md={3} className="mt-3 d-flex-inline">
+            {
+              category.map((c) => (
+                <Col md={4}>
                   <Card style={{ width: '18rem' }}>
                     <Card.Body>
                       <Card.Title><h2>{c.title}</h2></Card.Title>
@@ -121,15 +120,14 @@ const Home = (props) => {
                         {c.company_name}
                       </Card.Text>
                       <Card.Text>
-                      <span><b>{c.job_type.toUpperCase()}</b> - {c.category}</span>
+                        <span><b>{c.job_type.toUpperCase()}</b> - {c.category}</span>
                       </Card.Text>
                       <Button variant="info">Add to favs</Button>
                     </Card.Body>
                   </Card>
-                ))
-              }
-              </ListGroup>
-          </Col>
+                </Col>
+              ))
+            }
         </Row>
       </Container>
     </>
