@@ -17,7 +17,11 @@ import { Link } from "react-router-dom";
 import { addToFavAction } from "../actions";
 
 
+const mapStateToProps = (state) => state;
 
+const mapDispatchToProps = (dispatch) => ({
+  addToFavAction: (job) => dispatch(addToFavAction(job)),
+});
 
 const Home = (props) => {
   const [query, setQuery] = useState();
@@ -112,7 +116,7 @@ const Home = (props) => {
             </ListGroup>
           </Col>
         </Row>
-        <Row id='row2' md={3} className="mt-3 d-flex-inline">
+        <Row id='row2' md={4} s={6} xs={6} xlg={3} className="mt-3 d-flex">
           {
             category.map((c) => (
               <Col md={4}>
@@ -140,9 +144,5 @@ const Home = (props) => {
   );
 };
 
-const mapStateToProps = (state) => state;
 
-const mapDispatchToProps = (dispatch) => ({
-  addToFavAction: (job) => dispatch(addToFavAction(job)),
-});
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
