@@ -16,6 +16,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToFavAction } from "../actions";
 
+
+
+
 const Home = (props) => {
   const [query, setQuery] = useState();
   const [jobOffers, setJobOffers] = useState([]);
@@ -110,24 +113,27 @@ const Home = (props) => {
           </Col>
         </Row>
         <Row id='row2' md={3} className="mt-3 d-flex-inline">
-            {
-              category.map((c) => (
-                <Col md={4}>
-                  <Card style={{ width: '18rem' }}>
-                    <Card.Body>
-                      <Card.Title><h2>{c.title}</h2></Card.Title>
-                      <Card.Text>
-                        {c.company_name}
-                      </Card.Text>
-                      <Card.Text>
-                        <span><b>{c.job_type.toUpperCase()}</b> - {c.category}</span>
-                      </Card.Text>
-                      <Button variant="info">Add to favs</Button>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))
-            }
+          {
+            category.map((c) => (
+              <Col md={4}>
+                <Card style={{ width: '18rem' }}>
+                  <Card.Body>
+                    <Card.Title><h2>{c.title}</h2></Card.Title>
+                    <Card.Text>
+                      {c.company_name}
+                    </Card.Text>
+                    <Card.Text>
+                      <span><b>{c.job_type.toUpperCase()}</b> - {c.category}</span>
+                    </Card.Text>
+                    <Button onClick={() => {props.addToFavAction(c);}}
+                      variant="primary">
+                      Add To Fav
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))
+          }
         </Row>
       </Container>
     </>
